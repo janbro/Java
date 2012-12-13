@@ -37,14 +37,10 @@ public class SeatingChart {
 	public boolean swap(String s1,String s2){
 		if(!contains(s1) || !contains(s2))
 			return false;
-		for(String[] a:theChart)
-			for(String b:a)
-				if(b.equals(s1))
-					b=s2;
-		for(String[] a:theChart)
-			for(String b:a)
-				if(b.equals(s2))
-					b=s1;
+		int[] a=getCell(s1);
+		int[] b=getCell(s2);
+		theChart[a[0]][a[1]]=s2;
+		theChart[b[0]][b[1]]=s1;
 		return true;
 	}
 	public int getRow(String s){
@@ -70,9 +66,11 @@ public class SeatingChart {
 	}
 	public String toString(){
 		String s="";
-		for(String[] a:theChart)
+		for(String[] a:theChart){
 			for(String b:a)
-				s+=","+b;//last names
+				s+=b+", ";
+			s+="\n";
+		}
 		return s;
 	}
 }
