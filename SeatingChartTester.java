@@ -1,3 +1,5 @@
+package Java;
+
 public class SeatingChartTester {
 	public static void main(String[] args){
 		String[][] statChart=new String[][]{new String[]{"Alejandro Munoz","Nick Munoz","Max Miller","Eric Rubio"}

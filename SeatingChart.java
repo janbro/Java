@@ -1,3 +1,5 @@
+package Java;
+
 public class SeatingChart {
 	private String[][] theChart;
 	public SeatingChart(int r,int c){
