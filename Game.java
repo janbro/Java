@@ -1,4 +1,4 @@
-package blackJack;
+package Java;
 
 import java.util.Scanner;
 

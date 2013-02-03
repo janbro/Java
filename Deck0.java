@@ -1,8 +1,8 @@
 package Java;
 import java.util.*;
-public class Deck {
+public class Deck0 {
 	private ArrayList<Card> cards;
-	public Deck(){
+	public Deck0(){
 		cards=new ArrayList<Card>();
 		String[] standard=BlackJackMethods.getCards();
 		for(String a:standard)

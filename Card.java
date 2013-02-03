@@ -1,4 +1,4 @@
-package blackJack;
+package Java;
 
 public class Card {
 	private String suit;
