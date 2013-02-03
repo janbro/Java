@@ -10,8 +10,12 @@ public class BlackJack {
 //			System.out.println(b);
 //		for(String a:getCards())
 //			System.out.println(a);
-		factorInfo(24);
-		factorInfo(31);
+//		factorInfo(24);
+//		factorInfo(31);
+		Game foo=new Game();
+		foo.explainRules();
+		while(true)
+			foo.playGame();
 	}
 
 	public static boolean[] getPrimes(int n){
