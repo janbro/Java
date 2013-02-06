@@ -2,60 +2,54 @@ package pakage;
 
 import java.util.ArrayList;
 
-public class PracticeBasicsII {
-  
+public class PracticeBasicsI {
+	
 	public static void main(String[] args){
-		int[] a = {1,5,4,4,3};
-		FunnyNumbers();
-		a=(AvgNums(a));
+		int[] a = FunnyNumbers(5,0,10);
 		for(int i=0;i<a.length;i++){
 			System.out.println(a[i]);
 		}
-		Higher(a);
-		PracticeBasicsI.PrintNums(a);
-		System.out.println(OddNums(a));
+		System.out.println(RemoveDuplicates(a));
 	}
 	
-	public static int[] FunnyNumbers(){
-		int[] nums = new int[35];
-		for(int i=0;i<nums.length;i++){
-			nums[i]=((int)(Math.random()*380))-200;
-			System.out.println(nums[i]);
+	public static int[] FunnyNumbers(int amt, int a, int b){
+		int[] res = new int[amt];
+		for(int i=0;i<res.length;i++){
+			res[i]=(int)(Math.random()*(b-a));
 		}
-		for(int i=0;i<nums.length;i++){
-			nums[i]=Math.abs(nums[i]);
-		}
-		return nums;
+		return res;
 	}
 	
-	public static int[] AvgNums(int[] input){
-		int avg=0;
+	public static ArrayList<Integer> RemoveDuplicates(int[] input){
+		ArrayList<Integer> res = new ArrayList<Integer>(input[0]);
 		for(int i=0;i<input.length;i++){
-			avg+=input[i];
-		}avg/=input.length;
-		input[0]=avg;
-		input[input.length-1]=avg;
-		return input;
-	}
-	
-	public static void Higher(int[] input){
-		int sum=0;
-		for(int i=1;i<input.length;i++){
-			if(input[i-1]>input[i]){
-				input[i]=21;
-			}sum+=input[i];
-		}
-		System.out.println(sum);
-	}
-	
-	public static ArrayList<Integer> OddNums(int[] nums){
-		ArrayList<Integer> res = new ArrayList<Integer>();
-		for(int i=0;i<nums.length;i++){
-			if(nums[i]%2==1&&!res.contains(nums[i])){
-				res.add(nums[i]);
+			if(!res.contains(input[i])){
+				res.add(input[i]);
 			}
 		}
 		return res;
 	}
-
+	
+	public static int AddNumbers(int[] input){
+		int res=0;
+		for(int i=0;i<input.length;i++){
+			res+=input[i];
+		}
+		return res;
+	}
+	
+	public static void PrintNums(int[] input){
+		for(int i=0;i<input.length;i++){
+			System.out.println(input[i]);
+		}
+	}
+	
+	public static void PrintNums(ArrayList<Integer> input){
+		for(int i=0;i<input.size();i++){
+			System.out.println(input.get(i));
+		}
+	}
+	
+	
+	
 }
