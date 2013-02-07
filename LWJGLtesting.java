@@ -25,8 +25,16 @@ public class LWJGLtesting{
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		boolean toggle=false;
 		int count=10;
+		long lastFPS=getTime();
+		long fps=0;
 		while (!Display.isCloseRequested()){
-			if(Keyboard.next() && count>100){
+			if(getTime() - lastFPS > 1000) {
+		        Display.setTitle("FPS: " + fps); 
+		        fps = 0; //reset the FPS counter
+		        lastFPS += 1000; //add one second
+		    }
+		    fps++;
+			if(Keyboard.next() && count>10){
 				toggle=!toggle;
 				count=0;
 			}
@@ -47,7 +55,11 @@ public class LWJGLtesting{
 			if(count>1000)
 				count=100;
 			count++;
+			Display.sync(60);
 		}
 		Display.destroy();
+	}
+	public long getTime() {
+		return System.nanoTime() / 1000000;
 	}
 }
