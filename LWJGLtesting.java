@@ -23,12 +23,17 @@ public class LWJGLtesting{
 		GL11.glLoadIdentity();
 		GL11.glOrtho(0, 800, 0, 600, 1, -1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		boolean toggle=false;
+		int count=10;
 		while (!Display.isCloseRequested()){
-			Keyboard.next();
-			boolean pressed=Keyboard.getEventKey()==Keyboard.KEY_A;
-			System.out.println(pressed);
+			if(Keyboard.next() && count>100){
+				toggle=!toggle;
+				count=0;
+			}
+//			boolean pressed=Keyboard.getEventKey()==Keyboard.KEY_A;
+//			System.out.println(pressed);
 		    GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-		    if(pressed)
+		    if(toggle)
 		    	GL11.glColor3f((float)Math.random(),(float)Math.random(),(float)Math.random());
 		    else
 		    	GL11.glColor3f(0.5f,0.5f,1.0f);
@@ -39,6 +44,9 @@ public class LWJGLtesting{
 			GL11.glVertex2f(100,100+200);
 		    GL11.glEnd();
 			Display.update();
+			if(count>1000)
+				count=100;
+			count++;
 		}
 		Display.destroy();
 	}
