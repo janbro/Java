@@ -1,7 +1,7 @@
-package blackJack;
+package Java;
 
 import java.util.Scanner;
-
+@SuppressWarnings("unused")
 public class War implements Play {
 
 	private static Scanner scanner = new Scanner(System.in);

@@ -9,6 +9,7 @@ public class SeatingChart {
 	public SeatingChart(String[][] chart){
 		theChart=chart;
 	}
+	@SuppressWarnings("unused")
 	public void clearAllSeats(){
 		for(String[] a:theChart)
 			for(String b:a)
