@@ -3,7 +3,7 @@ package Java;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.GL11;
+import static org.lwjgl.opengl.GL11.*;
 
 public class LWJGLtesting extends Graphics{
 	public static void main(String[] argv) throws InterruptedException, LWJGLException{
@@ -18,10 +18,10 @@ public class LWJGLtesting extends Graphics{
 			e.printStackTrace();
 			System.exit(0);
 		}
-		GL11.glMatrixMode(GL11.GL_PROJECTION);
-		GL11.glLoadIdentity();
-		GL11.glOrtho(0, 800, 0, 600, 1, -1);
-		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, 800, 0, 600, 1, -1);
+		glMatrixMode(GL_MODELVIEW);
 		boolean flashToggle=false;
 		int count=10;
 		long lastFPS=getTime();
@@ -42,11 +42,11 @@ public class LWJGLtesting extends Graphics{
 			}
 //			boolean pressed=Keyboard.getEventKey()==Keyboard.KEY_A;
 //			System.out.println(pressed);
-		    GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+		    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		    if(flashToggle)
-		    	GL11.glColor3f((float)Math.random(),(float)Math.random(),(float)Math.random());
+		    	glColor3f((float)Math.random(),(float)Math.random(),(float)Math.random());
 		    else
-		    	GL11.glColor3f(0.5f,0.5f,1.0f);
+		    	glColor3f(0.5f,0.5f,1.0f);
 		    makeSquare(100,100,200);
 			Display.update();
 			if(count>1000)

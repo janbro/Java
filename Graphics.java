@@ -3,7 +3,7 @@ package Java;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
+import static org.lwjgl.opengl.GL11.*;
 
 public class Graphics {
 	/**
@@ -63,11 +63,11 @@ public class Graphics {
 		makeRectangle(x,y,width,width);
 	}
 	public void makeRectangle(int x,int y,int length,int height){
-		GL11.glBegin(GL11.GL_QUADS);
-	    GL11.glVertex2f(x,y);
-		GL11.glVertex2f(x+length,y);
-		GL11.glVertex2f(x+length,y+height);
-		GL11.glVertex2f(x,y+height);
-	    GL11.glEnd();
+		glBegin(GL_QUADS);
+	    glVertex2f(x,y);
+		glVertex2f(x+length,y);
+		glVertex2f(x+length,y+height);
+		glVertex2f(x,y+height);
+	    glEnd();
 	}
 }
