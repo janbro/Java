@@ -59,6 +59,9 @@ public class Graphics {
 	public long getTime() {
 		return System.nanoTime() / 1000000;
 	}
+	public void setColor(Number red,Number green,Number blue){
+		glColor3f(red.floatValue(),green.floatValue(),blue.floatValue());
+	}
 	public void makeSquare(int x,int y,int width){
 		makeRectangle(x,y,width,width);
 	}

@@ -44,9 +44,9 @@ public class LWJGLtesting extends Graphics{
 //			System.out.println(pressed);
 		    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		    if(flashToggle)
-		    	glColor3f((float)Math.random(),(float)Math.random(),(float)Math.random());
+		    	setColor(Math.random(),Math.random(),Math.random());
 		    else
-		    	glColor3f(0.5f,0.5f,1.0f);
+		    	setColor(0.5f,0.5f,1.0f);
 		    makeSquare(100,100,200);
 			Display.update();
 			if(count>1000)
