@@ -34,12 +34,12 @@ public class LWJGLtesting extends Graphics{
 		        lastFPS += 1000; //add one second
 		    }
 		    fps++;
+		    if(Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+		    	Display.setFullscreen(!Display.isFullscreen());
 		    if(Keyboard.next() && count>10){
 				flashToggle=!flashToggle;
 				count=0;
 			}
-		    if(Keyboard.isKeyDown(Keyboard.KEY_SPACE))
-		    	Display.setFullscreen(!Display.isFullscreen());
 //			boolean pressed=Keyboard.getEventKey()==Keyboard.KEY_A;
 //			System.out.println(pressed);
 		    GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
@@ -47,12 +47,7 @@ public class LWJGLtesting extends Graphics{
 		    	GL11.glColor3f((float)Math.random(),(float)Math.random(),(float)Math.random());
 		    else
 		    	GL11.glColor3f(0.5f,0.5f,1.0f);
-		    GL11.glBegin(GL11.GL_QUADS);
-		    GL11.glVertex2f(100,100);
-			GL11.glVertex2f(100+200,100);
-			GL11.glVertex2f(100+200,100+200);
-			GL11.glVertex2f(100,100+200);
-		    GL11.glEnd();
+		    makeSquare(100,100,200);
 			Display.update();
 			if(count>1000)
 				count=100;

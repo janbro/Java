@@ -3,6 +3,7 @@ package Java;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.GL11;
 
 public class Graphics {
 	/**
@@ -57,5 +58,16 @@ public class Graphics {
 	}
 	public long getTime() {
 		return System.nanoTime() / 1000000;
+	}
+	public void makeSquare(int x,int y,int width){
+		makeRectangle(x,y,width,width);
+	}
+	public void makeRectangle(int x,int y,int length,int height){
+		GL11.glBegin(GL11.GL_QUADS);
+	    GL11.glVertex2f(x,y);
+		GL11.glVertex2f(x+length,y);
+		GL11.glVertex2f(x+length,y+height);
+		GL11.glVertex2f(x,y+height);
+	    GL11.glEnd();
 	}
 }
