@@ -6,15 +6,7 @@ import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
 
 public class Graphics {
-	/**
-	 * Set the display mode to be used 
-	 * 
-	 * @param width The width of the display required
-	 * @param height The height of the display required
-	 * @param fullscreen True if we want fullscreen mode
-	 */
 	public void setDisplayMode(int width, int height, boolean fullscreen) {
-	    // return if requested DisplayMode is already set
 	    if ((Display.getDisplayMode().getWidth() == width) && 
 	        (Display.getDisplayMode().getHeight() == height) && 
 		(Display.isFullscreen() == fullscreen)) {
@@ -34,9 +26,6 @@ public class Graphics {
 				    freq = targetDisplayMode.getFrequency();
 	                        }
 	                    }
-			    // if we've found a match for bpp and frequence against the 
-			    // original display mode then it's probably best to go for this one
-			    // since it's most likely compatible with the monitor
 			    if ((current.getBitsPerPixel() == Display.getDesktopDisplayMode().getBitsPerPixel()) &&
 	                        (current.getFrequency() == Display.getDesktopDisplayMode().getFrequency())) {
 	                            targetDisplayMode = current;
