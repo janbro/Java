@@ -29,8 +29,10 @@ public class LWJGLtesting extends Graphics{
 			        lastFPS += 1000; //add one second
 			    }
 			    fps++;
-			    if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
+			    if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
 			    	Display.destroy();
+			    	break;
+			    }
 			    if(Keyboard.isKeyDown(Keyboard.KEY_SPACE))
 			    	Display.setFullscreen(!Display.isFullscreen());
 			    if(Keyboard.next() && count>10){
