@@ -2,9 +2,22 @@ package Java;
 
 public class Sorting {
 	public static void main(String[] args){
-		int[] a={1,2,3,4,5,6,7,8,9,0};
+		int[] a={3,4,5,7,9,6,8,7,0,1};
+		int[] b={3,4,5,7,9,6,8,7,0,1};
+		int[] c={3,4,5,7,9,6,8,7,0,1};
+		System.out.println(ats(a)+"\n"+ats(b)+"\n"+ats(c)+"\n");
+		insertionSort(a);
+		selectionSort(b);
+//		mergeSort(c);
+		System.out.println(ats(a)+"\n"+ats(b)+"\n"+ats(c));
 	}
-	public static void InsertionSort(int[] num){
+	public static String ats(int[] a){
+		String $="";
+		for(int b:a)
+			$+=","+b;
+		return $.substring(1);
+	}
+	public static void insertionSort(int[] num){
 		int j;           // the number of items sorted so far
 		int key;         // the item to be inserted
 		int i;  
