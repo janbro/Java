@@ -5,17 +5,29 @@ public class ConnectFour {
 	public static void main(String[] args){
 		
 	}
+	public void play(int team,ConnectFourPlayer player){
+		
+	}
 	public ConnectFour(){
 		new ConnectFour(4,4,4);
 	}
 	public ConnectFour(int x,int y,int z){
 		gameBoard=new int[x][y][z];
 	}
+	public int getLength(){
+		return gameBoard.length;
+	}
+	public int getWidth(){
+		return gameBoard[0].length;
+	}
+	public int getHeight(){
+		return gameBoard[0][0].length;
+	}
 	public int[][][] getBoard(){
-		int[][][] board=new int[gameBoard.length][gameBoard[0].length][gameBoard[0][0].length];
-		for(int i=0;i<board.length;i++)
-			for(int j=0;j<board.length;j++)
-				for(int k=0;k<board.length;k++)
+		int[][][] board=new int[getLength()][getWidth()][getHeight()];
+		for(int i=0;i<getLength();i++)
+			for(int j=0;j<getWidth();j++)
+				for(int k=0;k<getHeight();k++)
 					board[i][j][k]=gameBoard[i][j][k];
 		return board;
 	}
