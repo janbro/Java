@@ -1,18 +1,33 @@
-package Java;
+package pakage;
 
 import java.util.ArrayList;
 
 public class MagicSquares {
-	
+
 	public static void main(String[] args){
-		int[][] ms = magicSquare(5*5);
+		int magicNum=50*50;
+		int t=0,p=0,temp=magicNum;
+		while(temp>0){
+			temp/=10;
+			p++;
+		}
+		int[][] ms = magicSquare(magicNum);
 		for(int i=0;i<ms.length;i++){
-			for(int j=0;j<ms[i].length;j++)
+			for(int j=0;j<ms[i].length;j++){
 				System.out.print(ms[i][j]+" ");
+				temp=ms[i][j];
+				while(temp>0){
+					temp=temp/10;
+					t++;
+				}
+				for(int l=0;l<p-t;l++){
+					System.out.print(" ");
+				}t=0;
+			}
 			System.out.println();
 		}
 	}
-	
+
 	public static int[][] magicSquare(int num){
 		int[][] res=new int[(int) Math.sqrt(num)][(int) Math.sqrt(num)];
 		ArrayList<Integer> nums = new ArrayList<Integer>();
@@ -43,26 +58,9 @@ public class MagicSquares {
 			if(y>=res.length)
 				y=y-res.length;
 		}
-		/*
-		for(int i=0;i<res.length-1;i++){
-			for(int j=i%2;j<res[i].length;j+=2){
-				res[i][j]=nums.get(count);
-				res[res.length-1-i][res[i].length-1-j]=nums.get(nums.size()-1-count);
-				count+=2;
-			}
-		}count=0;
-		//Odds
-		for(int i=res.length-1;i>0;i--){
-			for(int j=(res[i].length-2)+i%2;j>0;j-=2){
-				res[i][j]=nums.get(count);
-				res[res.length-1-i][res[i].length-1-j]=nums.get(nums.size()-1-count);
-				count+=2;
-			}
-		}*/
-		//res[0][0]=midNum;
 		System.out.println("Magic Num is: "+magicNum);
 		return res;
-		
+
 	}
-	
+
 }
