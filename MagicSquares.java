@@ -5,24 +5,22 @@ import java.util.ArrayList;
 public class MagicSquares {
 	
 	public static void main(String[] args){
-		int[][] ms = magicSquare(17*17);
+		int[][] ms = magicSquare(5*5);
 		for(int i=0;i<ms.length;i++){
-			for(int j=0;j<ms[i].length;j++){
+			for(int j=0;j<ms[i].length;j++)
 				System.out.print(ms[i][j]+" ");
-			}System.out.println();
+			System.out.println();
 		}
-		
 	}
 	
 	public static int[][] magicSquare(int num){
 		int[][] res=new int[(int) Math.sqrt(num)][(int) Math.sqrt(num)];
 		ArrayList<Integer> nums = new ArrayList<Integer>();
-		for(int i=1;i<=num;i++){
+		for(int i=1;i<=num;i++)
 			nums.add(i);
-		}
 		System.out.println(nums);
 		int midNum=(num+1)/2;
-		int magicNum=(int) ((res.length*(Math.pow(res.length,2)))/2);
+		int magicNum=(int) ((res.length*(num+1))/2);
 		int x=0,y=res.length/2,count=0;
 		//Evens
 		while(count<=num-1){
@@ -39,11 +37,11 @@ public class MagicSquares {
 			if(x<0)
 				x=res.length-1;
 			if(x>=res.length)
-				x=0;
+				x=x-res.length;
 			if(y<0)
 				y=res.length-1;
 			if(y>=res.length)
-				y=0;
+				y=y-res.length;
 		}
 		/*
 		for(int i=0;i<res.length-1;i++){
