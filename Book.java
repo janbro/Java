@@ -5,17 +5,6 @@ import java.util.List;
 
 public class Book{
 	private String features;
-	public static void main(String[] args){
-		Book a=new Book("FICCOMROMARC_3_");
-		Book b=new Book("NONCOMROMABA_3_");
-		ArrayList<Book> books=new ArrayList<Book>();
-		books.add(a);
-		books.add(b);
-		double[] c=getFitCoefficients(books);
-		for(double val:c)
-			System.out.println(val);
-		removeOutliers(books);
-	}
 	public Book(String features){
 		this.features=features;
 	}
