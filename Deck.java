@@ -6,7 +6,6 @@ public class Deck {
 	private ArrayList<Card> cards;
 	
 	private int cardValue(String input) {
-		// TODO Auto-generated method stub
 		int num;
 		try{
 			num=Integer.parseInt(input);
@@ -16,7 +15,6 @@ public class Deck {
 			else
 				num = 10;
 		}
-		
 		return num;
 	}
 	
@@ -26,11 +24,9 @@ public class Deck {
 		for(String a:standard)
 			cards.add(new Card(a));
 	}
-	
 	public void shuffle(){
 		Collections.shuffle(cards);
 	}
-	
 	public void takeCardOutOfDeck(Card a){
 		for(int i=0;i<cards.size();i++)
 			if(a.equals(cards.get(i))){
@@ -38,14 +34,15 @@ public class Deck {
 				return;
 			}
 	}
-	
 	public int deal(){
 		Card a=cards.get(0);
 		takeCardOutOfDeck(a);
 		System.out.println(a);
 		return cardValue((a.toString().substring(a.toString().indexOf(" ")+1)));
 	}
-
+	public int size(){
+		return cards.size();
+	}
 	public String toString(){
 		String a="";
 		for(Card b:cards)
