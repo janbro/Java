@@ -1,5 +1,6 @@
 package Java;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Book{
@@ -7,14 +8,20 @@ public class Book{
 	public static void main(String[] args){
 		Book a=new Book("FICCOMROMARC_3_");
 		Book b=new Book("NONCOMROMABA_3_");
-		System.out.println(a.getMatchCoeff(b));
+		ArrayList<Book> books=new ArrayList<Book>();
+		books.add(a);
+		books.add(b);
+		double[] c=getFitCoefficients(books);
+		for(double val:c)
+			System.out.println(val);
+		removeOutliers(books);
 	}
 	public Book(String features){
 		this.features=features;
 	}
 	public double getMatchCoeff(Book other){
-		String[] a=new String[features.length()];
-		String[] b=new String[features.length()];
+		String[] a=new String[features.length()/3];
+		String[] b=new String[features.length()/3];
 		for(int i=0;i<features.length();i+=3){
 			a[i/3]=features.substring(i,i+3);
 			b[i/3]=other.features.substring(i,i+3);
@@ -26,7 +33,7 @@ public class Book{
 					count++;
 		return count/(double)a.length;
 	}
-	public double[] getFitCoefficients(List<Book> books){
+	public static double[] getFitCoefficients(List<Book> books){
 		double[] values=new double[books.size()];
 		for(int i=0;i<books.size();i++)
 			for(int j=i+1;j<books.size();j++){
@@ -36,13 +43,13 @@ public class Book{
 			}
 		return values;
 	}
-	public void removeOutliers(List<Book> book){
+	public static void removeOutliers(List<Book> book){
 		double[] values=getFitCoefficients(book);
 		double avg=0;
 		for(double val:values)
 			avg+=val;
 		avg/=values.length;
-		for(int i=values.length;i>=0;i--)
+		for(int i=values.length-1;i>=0;i--)
 			if(values[i] < 0.5*avg)
 				book.remove(values[i]);
 	}
