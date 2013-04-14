@@ -13,6 +13,10 @@ public class Utilities {
 		for(Object obj:arr)
 			print(obj);
 	}
+	public static void print(int[] arr){
+		for(int n:arr)
+			print(n);
+	}
 	public static void print(List<Object> lis){
 		for(Object obj:lis)
 			print(obj);
