@@ -17,7 +17,16 @@ public class Statistics {
 			sum+=n;
 		return sum;
 	}
+	public static double getSum(double[] list){
+		double sum=0;
+		for(double n:list)
+			sum+=n;
+		return sum;
+	}
 	public static double getMean(int[] list){
+		return getSum(list)/(double)list.length;
+	}
+	public static double getMean(double[] list){
 		return getSum(list)/(double)list.length;
 	}
 	public static int getMode(int[] list){
