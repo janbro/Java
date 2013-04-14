@@ -5,15 +5,6 @@ import java.util.*;
 public class Deck {
 	private ArrayList<Card> cards;
 	
-	public static String[] getCards(){
-		String[] suit={"Clubs", "Diamonds", "Hearts", "Spades"};
-		String[] rank={"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
-		String[] cards=new String[suit.length*rank.length];
-		for(int i=0;i<suit.length;i++)
-			for(int j=0;j<rank.length;j++)
-				cards[i*rank.length+j]=rank[j]+" of "+suit[i];
-		return cards;
-	}
 	private int cardValue(String input) {
 		int num;
 		try{
@@ -29,7 +20,7 @@ public class Deck {
 	
 	public Deck(){
 		cards=new ArrayList<Card>();
-		String[] standard=getCards();
+		String[] standard=BlackJack.getCards();
 		for(String a:standard)
 			cards.add(new Card(a));
 	}
