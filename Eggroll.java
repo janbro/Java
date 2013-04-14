@@ -43,13 +43,11 @@ public class Eggroll implements Play {
 		pile.clearDeck();
 		deck = new Deck();
 		deck.shuffle();
-		while(deck.size() > 0)
-			deck.deal();
 	}
 	private void dealDeck(){
 		int count=0;
 		while(!deck.isEmpty()){
-			players.get(count%players.size());
+			players.get(count%players.size()).addCard(deck.deal());
 			count++;
 		}
 	}

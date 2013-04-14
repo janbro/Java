@@ -11,6 +11,26 @@ public class Card {
 		rank=name.substring(b+1);
 	}
 	
+	private String getRank(){
+		return rank;
+	}
+	
+	private String getSuit(){
+		return suit;
+	}
+	
+	public boolean similarRank(Card a){
+		if(getRank().equals(a.getRank()))
+			return true;
+		return false;
+	}
+	
+	public boolean similarSuit(Card a){
+		if(getSuit().equals(a.getSuit()))
+				return true;
+		return false;
+	}
+	
 	public Card(String suit,String rank){
 		this.suit=suit;
 		this.rank=rank;

@@ -18,6 +18,14 @@ public class Deck {
 		return num;
 	}
 	
+	public boolean isEmpty(){
+		return cards.isEmpty();
+	}
+	
+	public ArrayList<Card> getDeck(){
+		return cards;
+	}
+	
 	public Deck(){
 		cards=new ArrayList<Card>();
 		String[] standard=BlackJack.getCards();
@@ -34,7 +42,18 @@ public class Deck {
 				return;
 			}
 	}
-	public int deal(){
+	
+	public void clearDeck(){
+		cards.clear();
+	}
+	
+	public Card deal(){
+		Card a=cards.get(0);
+		takeCardOutOfDeck(a);
+		return a;
+	}
+	
+	public int dealRaw(){
 		Card a=cards.get(0);
 		takeCardOutOfDeck(a);
 		System.out.println(a);
