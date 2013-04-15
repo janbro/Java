@@ -1,7 +1,7 @@
 package Java;
 
 public class ConnectFour {
-	private int[][][] gameBoard;
+	private int[][] gameBoard;
 	public static void main(String[] args){
 		
 	}
@@ -9,29 +9,25 @@ public class ConnectFour {
 		
 	}
 	public ConnectFour(){
-		new ConnectFour(4,4,4);
+		new ConnectFour(4,4);
 	}
-	public ConnectFour(int x,int y,int z){
-		gameBoard=new int[x][y][z];
-	}
-	public int getLength(){
-		return gameBoard.length;
+	public ConnectFour(int x,int y){
+		gameBoard=new int[x][y];
 	}
 	public int getWidth(){
-		return gameBoard[0].length;
+		return gameBoard.length;
 	}
 	public int getHeight(){
-		return gameBoard[0][0].length;
+		return gameBoard[0].length;
 	}
-	public int[][][] getBoard(){
-		int[][][] board=new int[getLength()][getWidth()][getHeight()];
-		for(int i=0;i<getLength();i++)
-			for(int j=0;j<getWidth();j++)
-				for(int k=0;k<getHeight();k++)
-					board[i][j][k]=gameBoard[i][j][k];
+	public int[][] getBoard(){
+		int[][] board=new int[getWidth()][getHeight()];
+		for(int i=0;i<getWidth();i++)
+			for(int j=0;j<getHeight();j++)
+				board[i][j]=gameBoard[i][j];
 		return board;
 	}
-	public int getPos(int x,int y,int z){
-		return gameBoard[x][y][z];
+	public int getPos(int x,int y){
+		return gameBoard[x][y];
 	}
 }
