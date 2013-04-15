@@ -20,15 +20,11 @@ public class Card {
 	}
 	
 	public boolean similarRank(Card a){ //Checks if cards ranks are equal
-		if(getRank().equals(a.getRank()))
-			return true;
-		return false;
+		return getRank().equals(a.getRank());
 	}
 	
 	public boolean similarSuit(Card a){ //Checks if cads suits are equal
-		if(getSuit().equals(a.getSuit()))
-				return true;
-		return false;
+		return getSuit().equals(a.getSuit());
 	}
 	
 	public Card(String suit,String rank){
