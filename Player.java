@@ -3,17 +3,22 @@ package Java;
 import java.util.*;
 
 public class Player {
-	private ArrayList<Card> hand;
+	private Deck hand;
 	
 	public Player(){
-		hand = new ArrayList<Card>();
+		hand = new Deck();
+		hand.clearDeck();
 	}
 	
 	public void addCard(Card a){
-		hand.add(a);
+		hand.addCard(a);
 	}
 	
-	public ArrayList<Card> getHand(){
+	public void removeCard(Card a){
+		hand.takeCardOutOfDeck(a);
+	}
+	
+	public Deck getHand(){
 		return hand;
 	}
 	

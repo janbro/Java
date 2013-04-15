@@ -3,7 +3,7 @@ package Java;
 public class GamePlayer {
 	
 	public static void main(String[] args){
-		Game game=new Game();
+		Eggroll game = new Eggroll(4);
 		game.playGame();
 	}
 

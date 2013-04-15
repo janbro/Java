@@ -14,7 +14,7 @@ public class Eggroll implements Play {
 	private static Deck deck;
 	private static Deck pile;
 	private static String input;
-	public boolean finished;
+	private boolean finished;
 	private int amountOfPlayers;
 	ArrayList<String> statuses;
 	
@@ -52,17 +52,19 @@ public class Eggroll implements Play {
 			count++;
 		}
 	}
-	private int lastMove(){ //Checks if last move was legal
-		if(pile.getDeck().size()>1){
-			if(pile.getDeck().get(pile.size()).similarRank(pile.getDeck().get(pile.size()-1))){
-				return 0;
-			}
-			else if((pile.getDeck().get(pile.size()).getValue()>pile.getDeck().get(pile.size()-1).getValue())){
-				return 1;
-			}
-		}
-		return -1;
+	
+	private Card getTopCard(){
+		return pile.getCards().get(pile.getCards().size());
 	}
+	
+	private boolean isValidMove(Card a){
+		if(pile.getCards().size()>1){
+			if(getTopCard().similarRank(a)||getTopCard().getValue()<a.getValue()){
+				return true;
+			}
+		}return false;
+	}
+	
 
 	@Override
 	public void playGame() {
@@ -75,11 +77,22 @@ public class Eggroll implements Play {
 			System.out.println(players.get(i).toString());
 		}*/
 		while(!finished){
-			
+			String input=null;
+			Card inputCard=null;
+			boolean validMove = false;
 			//Forgot how to play the game. I'll get back to that later.
-			players.get(turns%players.size());
-			
-			
+			while(!validMove){
+				input = scanner.nextLine();
+				inputCard = new Card(input);
+				if(players.get(turns%players.size()).getHand().hasCard(inputCard)){
+					if(isValidMove(inputCard)){
+						if(inputCard.getValue()==getTopCard().getValue()){
+							turns++;
+						}players.get(turns%players.size()).removeCard(inputCard);
+						pile.addCard(inputCard);
+					}
+				}
+			}
 			
 			
 			//Check for empty hand/winner
