@@ -5,37 +5,24 @@ import java.util.*;
 public class Deck {
 	private ArrayList<Card> cards;
 	
-	private int cardValue(String input) {
-		int num;
-		try{
-			num=Integer.parseInt(input);
-		}catch(Exception e){
-			if(input.toLowerCase().equals("ace"))
-				num=1;
-			else
-				num = 10;
-		}
-		return num;
-	}
-	
-	public boolean isEmpty(){
+	public boolean isEmpty(){ //Checks if deck is empty
 		return cards.isEmpty();
 	}
 	
-	public ArrayList<Card> getDeck(){
+	public ArrayList<Card> getDeck(){ //Return ArrayList of Cards in deck
 		return cards;
 	}
 	
 	public Deck(){
 		cards=new ArrayList<Card>();
-		String[] standard=BlackJack.getCards();
+		String[] standard=BlackJack.getCards(); //Don't understand why getCards() is in blackjack.class, but as long as it works...
 		for(String a:standard)
 			cards.add(new Card(a));
 	}
-	public void shuffle(){
+	public void shuffle(){ //Java ArrayList shuffle
 		Collections.shuffle(cards);
 	}
-	public void takeCardOutOfDeck(Card a){
+	public void takeCardOutOfDeck(Card a){ //Takes specified card out of deck
 		for(int i=0;i<cards.size();i++)
 			if(a.equals(cards.get(i))){
 				cards.remove(i);
@@ -43,23 +30,23 @@ public class Deck {
 			}
 	}
 	
-	public void clearDeck(){
+	public void clearDeck(){ //Clears Entire Deck
 		cards.clear();
 	}
 	
-	public Card deal(){
+	public Card deal(){ //Deals a card, returns Card
 		Card a=cards.get(0);
 		takeCardOutOfDeck(a);
 		return a;
 	}
 	
-	public int dealRaw(){
+	public int dealRaw(){ //Deals a card, returns cards value(blackjack)
 		Card a=cards.get(0);
 		takeCardOutOfDeck(a);
 		System.out.println(a);
-		return cardValue((a.toString().substring(a.toString().indexOf(" ")+1)));
+		return a.getValue();
 	}
-	public int size(){
+	public int size(){ //Returns how many cards are left in deck
 		return cards.size();
 	}
 	public String toString(){

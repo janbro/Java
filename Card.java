@@ -11,25 +11,48 @@ public class Card {
 		rank=name.substring(b+1);
 	}
 	
-	private String getRank(){
+	private String getRank(){ //Returns rank
 		return rank;
 	}
 	
-	private String getSuit(){
+	private String getSuit(){ //Returns suit
 		return suit;
 	}
 	
-	public boolean similarRank(Card a){
-		return getRank().equals(a.getRank());
+	public boolean similarRank(Card a){ //Checks if cards ranks are equal
+		if(getRank().equals(a.getRank()))
+			return true;
+		return false;
 	}
 	
-	public boolean similarSuit(Card a){
-		return getSuit().equals(a.getSuit());
+	public boolean similarSuit(Card a){ //Checks if cads suits are equal
+		if(getSuit().equals(a.getSuit()))
+				return true;
+		return false;
 	}
 	
 	public Card(String suit,String rank){
 		this.suit=suit;
 		this.rank=rank;
+	}
+	
+	public int getValue(){
+		int num;
+		try{
+			num=Integer.parseInt(getRank());
+		}catch(Exception e){
+			if(getRank().toLowerCase().equals("ace"))
+				num=14;
+			else if(getRank().toLowerCase().equals("jack"))
+				num=11;
+			else if(getRank().toLowerCase().equals("queen"))
+				num=12;
+			else if(getRank().toLowerCase().equals("king"))
+				num=13;
+			else
+				num=-1;
+		}
+		return num;
 	}
 	
 	public String toString(){
