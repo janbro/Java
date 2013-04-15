@@ -19,6 +19,18 @@ public class Deck {
 		for(String a:standard)
 			cards.add(new Card(a));
 	}
+	
+	public boolean hasCard(Card a){
+		for(Card b:cards){
+			if(a.similarRank(b)&&a.similarSuit(b))
+				return true;
+		}return false;
+	}
+	
+	public void addCard(Card a){
+		cards.add(a);
+	}
+	
 	public void shuffle(){ //Java ArrayList shuffle
 		Collections.shuffle(cards);
 	}

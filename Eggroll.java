@@ -75,11 +75,16 @@ public class Eggroll implements Play {
 			System.out.println(players.get(i).toString());
 		}*/
 		while(!finished){
-			
+			String input=null;
+			boolean validMove = false;
 			//Forgot how to play the game. I'll get back to that later.
+			while(!validMove){
+				input = scanner.nextLine();
+				Card inputCard = new Card(input);
+				if(players.get(turns%players.size()).getHand().hasCard(inputCard));
+			}
+			
 			players.get(turns%players.size());
-			
-			
 			
 			
 			//Check for empty hand/winner
