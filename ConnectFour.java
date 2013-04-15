@@ -8,6 +8,7 @@ public class ConnectFour {
 	public void play(int team,ConnectFourPlayer player){
 		
 	}
+	//create bounded grid
 	public ConnectFour(){
 		new ConnectFour(4,4);
 	}
@@ -29,5 +30,8 @@ public class ConnectFour {
 	}
 	public int getPos(int x,int y){
 		return gameBoard[x][y];
+	}
+	public static boolean isValid(int move){
+		return true;
 	}
 }
