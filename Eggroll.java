@@ -84,6 +84,7 @@ public class Eggroll implements Play {
 			while(!validMove){
 				input = scanner.nextLine();
 				inputCard = new Card(input);
+<<<<<<< HEAD
 				if(players.get(turns%players.size()).getHand().hasCard(inputCard)){
 					if(isValidMove(inputCard)){
 						if(inputCard.getValue()==getTopCard().getValue()){
@@ -93,6 +94,13 @@ public class Eggroll implements Play {
 					}
 				}
 			}
+=======
+				if(players.get(turns%players.size()).getHand().hasCard(inputCard))
+					validMove=true;
+			}
+			
+			players.get(turns%players.size());
+>>>>>>> 30bb20627c315b8353fc364794ea9b7b2f8623df
 			
 			
 			//Check for empty hand/winner
