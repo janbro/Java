@@ -9,7 +9,7 @@ public class Deck {
 		return cards.isEmpty();
 	}
 	
-	public ArrayList<Card> getDeck(){ //Return ArrayList of Cards in deck
+	public ArrayList<Card> getCards(){ //Return ArrayList of Cards in deck
 		return cards;
 	}
 	
@@ -64,7 +64,7 @@ public class Deck {
 	public String toString(){
 		String a="";
 		for(Card b:cards)
-			a+=b.toString()+"\n";
+			a+=b.toString()+",";
 		return a;
 	}
 }

@@ -14,7 +14,7 @@ public class Eggroll implements Play {
 	private static Deck deck;
 	private static Deck pile;
 	private static String input;
-	public boolean finished;
+	private boolean finished;
 	private int amountOfPlayers;
 	ArrayList<String> statuses;
 	
@@ -52,20 +52,23 @@ public class Eggroll implements Play {
 			count++;
 		}
 	}
-	private int lastMove(){ //Checks if last move was legal
-		if(pile.getDeck().size()>1){
-			if(pile.getDeck().get(pile.size()).similarRank(pile.getDeck().get(pile.size()-1))){
-				return 0;
-			}
-			else if((pile.getDeck().get(pile.size()).getValue()>pile.getDeck().get(pile.size()-1).getValue())){
-				return 1;
-			}
-		}
-		return -1;
+	
+	private Card getTopCard(){
+		return pile.getCards().get(pile.getCards().size());
 	}
+	
+	private boolean isValidMove(Card a){
+		if(pile.getCards().size()>1){
+			if(getTopCard().similarRank(a)||getTopCard().getValue()<a.getValue()){
+				return true;
+			}
+		}return false;
+	}
+	
 
 	@Override
 	public void playGame() {
+		int cardPlayLimit=1;
 		int turns=0;
 		
 		setUp();
@@ -75,18 +78,26 @@ public class Eggroll implements Play {
 			System.out.println(players.get(i).toString());
 		}*/
 		while(!finished){
+			int numCardsPlayed=0;
 			String input=null;
-			Card inputCard=null;
-			boolean validMove = false;
 			//Forgot how to play the game. I'll get back to that later.
-			while(!validMove){
+			while(numCardsPlayed<cardPlayLimit){
+				Card[] inputCard=new Card[cardPlayLimit];
+				System.out.println("Player #"+(turns+1)+" turn.\nHand:"+players.get(turns%players.size()).getHand().toString());
 				input = scanner.nextLine();
-				inputCard = new Card(input);
-				if(players.get(turns%players.size()).getHand().hasCard(inputCard))
-					validMove=true;
+				inputCard = new Card[numCardsPlayed];
+				if(players.get(turns%players.size()).getHand().hasCard(inputCard[numCardsPlayed])){
+					if(isValidMove(inputCard[numCardsPlayed])){
+						if(inputCard[numCardsPlayed].getValue()==getTopCard().getValue()){
+							turns++;
+						}players.get(turns%players.size()).removeCard(inputCard[numCardsPlayed]);
+						pile.addCard(inputCard[numCardsPlayed]);
+						numCardsPlayed++;
+						if(inputCard[numCardsPlayed].getValue()==getTopCard().getValue())
+							turns++;
+					}
+				}
 			}
-			
-			players.get(turns%players.size());
 			
 			
 			//Check for empty hand/winner

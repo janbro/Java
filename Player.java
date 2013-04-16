@@ -14,6 +14,10 @@ public class Player {
 		hand.addCard(a);
 	}
 	
+	public void removeCard(Card a){
+		hand.takeCardOutOfDeck(a);
+	}
+	
 	public Deck getHand(){
 		return hand;
 	}
