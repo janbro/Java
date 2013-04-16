@@ -68,6 +68,7 @@ public class Eggroll implements Play {
 
 	@Override
 	public void playGame() {
+		int cardPlayLimit=1;
 		int turns=0;
 		
 		setUp();
@@ -77,12 +78,14 @@ public class Eggroll implements Play {
 			System.out.println(players.get(i).toString());
 		}*/
 		while(!finished){
+			int numCardsPlayed=0;
 			String input=null;
-			Card inputCard=null;
-			boolean validMove = false;
 			//Forgot how to play the game. I'll get back to that later.
-			while(!validMove){
+			while(numCardsPlayed<cardPlayLimit){
+				Card[] inputCard=new Card[cardPlayLimit];
+				System.out.println("Player #"+(turns+1)+" turn.\nHand:"+players.get(turns%players.size()).getHand().toString());
 				input = scanner.nextLine();
+<<<<<<< HEAD
 				inputCard = new Card(input);
 <<<<<<< HEAD
 				if(players.get(turns%players.size()).getHand().hasCard(inputCard)){
@@ -102,6 +105,22 @@ public class Eggroll implements Play {
 			players.get(turns%players.size());
 >>>>>>> 30bb20627c315b8353fc364794ea9b7b2f8623df
 			
+=======
+				inputCard = new Card[numCardsPlayed];
+				if(players.get(turns%players.size()).getHand().hasCard(inputCard[numCardsPlayed])){
+					if(isValidMove(inputCard[numCardsPlayed])){
+						if(inputCard[numCardsPlayed].getValue()==getTopCard().getValue()){
+							turns++;
+						}players.get(turns%players.size()).removeCard(inputCard[numCardsPlayed]);
+						pile.addCard(inputCard[numCardsPlayed]);
+						numCardsPlayed++;
+						if(inputCard[numCardsPlayed].getValue()==getTopCard().getValue())
+							turns++;
+					}
+				}
+			}
+			
+>>>>>>> 0e7fa454d5c89459996fcf00318764e4dd7652c9
 			
 			//Check for empty hand/winner
 			for(int i=0;i<players.size();i++){

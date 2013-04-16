@@ -64,7 +64,7 @@ public class Deck {
 	public String toString(){
 		String a="";
 		for(Card b:cards)
-			a+=b.toString()+"\n";
+			a+=b.toString()+",";
 		return a;
 	}
 }
