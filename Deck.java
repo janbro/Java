@@ -43,11 +43,13 @@ public class Deck {
 		Collections.shuffle(cards);
 	}
 	public void takeCardOutOfDeck(Card a){ //Takes specified card out of deck
-		for(int i=0;i<cards.size();i++)
-			if(a.equals(cards.get(i))){
+		for(int i=0;i<cards.size();i++){
+			System.out.println(a.toString()+":"+cards.get(i).toString());
+			if(a.toString().equals(cards.get(i).toString())){
 				cards.remove(i);
 				return;
 			}
+		}
 	}
 	
 	public void clearDeck(){ //Clears Entire Deck
@@ -61,8 +63,7 @@ public class Deck {
 	}
 	
 	public int dealRaw(){ //Deals a card, returns cards value(jack == 11, and so on)
-		Card a=cards.get(0);
-		takeCardOutOfDeck(a);
+		Card a=deal();
 		System.out.println(a);
 		return a.getValue();
 	}

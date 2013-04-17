@@ -71,6 +71,7 @@ public class Eggroll implements Play {
 	@Override
 	public void playGame() {
 		int cardPlayLimit=1;
+		int passCount=1;
 		int turns=0;
 		
 		setUp();
@@ -80,10 +81,17 @@ public class Eggroll implements Play {
 			System.out.println(players.get(i).toString());
 		}*/
 		while(!finished){
+			boolean pass=false;
 			int numCardsPlayed=0;
 			int sameCardCount=1;
 			String input=null;
 
+			if(passCount>4){
+				System.out.println("All players have passed!");
+			}
+
+			players.get(0).getHand().clearDeck();
+			players.get(0).addCard(new Card("3 of clubs"));
 			//Main Gameplay
 			while(numCardsPlayed<cardPlayLimit){
 				if(sameCardCount==4){ //Check for quadruple sets
@@ -97,33 +105,43 @@ public class Eggroll implements Play {
 				System.out.println("Player #"+(turns%players.size()+1)+" turn.\nHand:"+players.get(turns%players.size()).getHand().toString());
 				while(!validCard){	//Take input from the user
 					input = scanner.nextLine();
-					inputCard[numCardsPlayed] = new Card(input);
-					if(players.get(turns%players.size()).getHand().hasCard(inputCard[numCardsPlayed])){
-						if(numCardsPlayed>0)
-							if(inputCard[0].getValue()==inputCard[numCardsPlayed].getValue()){
-								validCard = true;
+					if(input.toLowerCase().equals("pass")){
+						pass=true;
+						passCount++;
+						turns++;
+						break;
+					}else{
+						inputCard[numCardsPlayed] = new Card(input);
+						if(players.get(turns%players.size()).getHand().hasCard(inputCard[numCardsPlayed])){
+							if(numCardsPlayed>0)
+								if(inputCard[0].getValue()==inputCard[numCardsPlayed].getValue()){
+									validCard = true;
+									numCardsPlayed++;
+								}
+								else{
+									System.out.println("You have to input the same card!");
+									numCardsPlayed=0;
+								}
+							else{
+								validCard=true;
 								numCardsPlayed++;
 							}
-							else{
-								System.out.println("You have to input the same card!");
-								numCardsPlayed=0;
-							}
-						else{
-							validCard=true;
-							numCardsPlayed++;
-						}
-					}else{
-						System.out.println("You don't have that card!");
+						}else{
+							System.out.println("You don't have that card!");
+						}System.out.println("Cardsplayed:"+numCardsPlayed+" playlimit:"+cardPlayLimit);
 					}
-				}if(numCardsPlayed==cardPlayLimit){
+				}if(pass)
+					break;
+				if(numCardsPlayed==cardPlayLimit){
 					if(isValidMove(inputCard[numCardsPlayed-1])){ //Make move if legal
+						players.get(turns%players.size()).removeCard(inputCard[numCardsPlayed-1]);
+						pile.addCard(inputCard[numCardsPlayed-1]);
 						if(inputCard[numCardsPlayed-1].getValue()==getTopCard().getValue()){ //Skip player if same card
 							turns++;
 							sameCardCount++;
-						}else
+						}else{
 							sameCardCount=1;
-						players.get(turns%players.size()).removeCard(inputCard[numCardsPlayed-1]);
-						pile.addCard(inputCard[numCardsPlayed-1]);
+						}
 						turns++;
 					}else
 						System.out.println("Not a valid move!");
@@ -132,11 +150,10 @@ public class Eggroll implements Play {
 				}
 			}
 			
-			
 			//Check for empty hand/winner
 			for(int i=0;i<players.size();i++){
 				if(players.get(i).getHand().size()==0){
-					System.out.println("Player "+i+" is "+statuses.get(players.size()));
+					System.out.println("Player "+(i+1)+" is "+statuses.get(players.size()-1));
 					players.remove(i);
 				}
 			}if(players.size()==1){
@@ -144,7 +161,6 @@ public class Eggroll implements Play {
 			}
 			System.out.println();
 		}
-		
 		
 	}
 	
