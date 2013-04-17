@@ -6,9 +6,9 @@ public class Card {
 	
 	public Card(String name){
 		int a=name.indexOf(" ");
-		suit=name.substring(0,a);
+		rank=name.substring(0,a).toLowerCase();
 		int b=name.indexOf(" ",a+1);
-		rank=name.substring(b+1);
+		suit=name.substring(b+1).toLowerCase();
 	}
 	
 	private String getRank(){ //Returns rank
@@ -20,16 +20,20 @@ public class Card {
 	}
 	
 	public boolean similarRank(Card a){ //Checks if cards ranks are equal
-		return getRank().equals(a.getRank());
+		if(getRank().equals(a.getRank()))
+			return true;
+		return false;
 	}
 	
 	public boolean similarSuit(Card a){ //Checks if cads suits are equal
-		return getSuit().equals(a.getSuit());
+		if(getSuit().equals(a.getSuit()))
+				return true;
+		return false;
 	}
 	
-	public Card(String suit,String rank){
-		this.suit=suit;
-		this.rank=rank;
+	public Card(String rank,String suit){
+		this.rank=rank.toLowerCase();
+		this.suit=suit.toLowerCase();
 	}
 	
 	public int getValue(){
@@ -52,7 +56,7 @@ public class Card {
 	}
 	
 	public String toString(){
-		return rank+" "+suit;
+		return rank+" of "+suit;
 	}
 //	public static void main(String[] args){
 //		Card a=new Card("Ace of Spades");

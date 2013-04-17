@@ -42,7 +42,9 @@ public class Eggroll implements Play {
 		}
 		pile = new Deck(); //Trash pile. Used to check if players move was legal.
 		pile.clearDeck();
+		pile.addCard(new Card("3 of Clubs"));
 		deck = new Deck();
+		deck.takeCardOutOfDeck(new Card("3 of Clubs"));
 		deck.shuffle();
 	}
 	private void dealDeck(){ //Deals out entire deck to all players
@@ -54,12 +56,12 @@ public class Eggroll implements Play {
 	}
 	
 	private Card getTopCard(){
-		return pile.getCards().get(pile.getCards().size());
+		return pile.getCards().get(pile.getCards().size()-1);
 	}
 	
 	private boolean isValidMove(Card a){
-		if(pile.getCards().size()>1){
-			if(getTopCard().similarRank(a)||getTopCard().getValue()<a.getValue()){
+		if(pile.getCards().size()>0){
+			if(getTopCard().getValue()<=a.getValue()||a.getValue()==2){
 				return true;
 			}
 		}return false;
@@ -79,48 +81,57 @@ public class Eggroll implements Play {
 		}*/
 		while(!finished){
 			int numCardsPlayed=0;
+			int sameCardCount=1;
 			String input=null;
-			//Forgot how to play the game. I'll get back to that later.
+
+			//Main Gameplay
 			while(numCardsPlayed<cardPlayLimit){
+				if(sameCardCount==4){ //Check for quadruple sets
+					System.out.println("Everyone drop a card!");
+					sameCardCount=1;
+				}
+				
+				System.out.println("Pile:"+getTopCard().toString()); //Show pile
+				boolean validCard=false;
 				Card[] inputCard=new Card[cardPlayLimit];
-				System.out.println("Player #"+(turns+1)+" turn.\nHand:"+players.get(turns%players.size()).getHand().toString());
-				input = scanner.nextLine();
-<<<<<<< HEAD
-				inputCard = new Card(input);
-<<<<<<< HEAD
-				if(players.get(turns%players.size()).getHand().hasCard(inputCard)){
-					if(isValidMove(inputCard)){
-						if(inputCard.getValue()==getTopCard().getValue()){
-							turns++;
-						}players.get(turns%players.size()).removeCard(inputCard);
-						pile.addCard(inputCard);
+				System.out.println("Player #"+(turns%players.size()+1)+" turn.\nHand:"+players.get(turns%players.size()).getHand().toString());
+				while(!validCard){	//Take input from the user
+					input = scanner.nextLine();
+					inputCard[numCardsPlayed] = new Card(input);
+					if(players.get(turns%players.size()).getHand().hasCard(inputCard[numCardsPlayed])){
+						if(numCardsPlayed>0)
+							if(inputCard[0].getValue()==inputCard[numCardsPlayed].getValue()){
+								validCard = true;
+								numCardsPlayed++;
+							}
+							else{
+								System.out.println("You have to input the same card!");
+								numCardsPlayed=0;
+							}
+						else{
+							validCard=true;
+							numCardsPlayed++;
+						}
+					}else{
+						System.out.println("You don't have that card!");
 					}
+				}if(numCardsPlayed==cardPlayLimit){
+					if(isValidMove(inputCard[numCardsPlayed-1])){ //Make move if legal
+						if(inputCard[numCardsPlayed-1].getValue()==getTopCard().getValue()){ //Skip player if same card
+							turns++;
+							sameCardCount++;
+						}else
+							sameCardCount=1;
+						players.get(turns%players.size()).removeCard(inputCard[numCardsPlayed-1]);
+						pile.addCard(inputCard[numCardsPlayed-1]);
+						turns++;
+					}else
+						System.out.println("Not a valid move!");
+				}else{
+					System.out.println("Input next card");
 				}
 			}
-=======
-				if(players.get(turns%players.size()).getHand().hasCard(inputCard))
-					validMove=true;
-			}
 			
-			players.get(turns%players.size());
->>>>>>> 30bb20627c315b8353fc364794ea9b7b2f8623df
-			
-=======
-				inputCard = new Card[numCardsPlayed];
-				if(players.get(turns%players.size()).getHand().hasCard(inputCard[numCardsPlayed])){
-					if(isValidMove(inputCard[numCardsPlayed])){
-						if(inputCard[numCardsPlayed].getValue()==getTopCard().getValue()){
-							turns++;
-						}players.get(turns%players.size()).removeCard(inputCard[numCardsPlayed]);
-						pile.addCard(inputCard[numCardsPlayed]);
-						numCardsPlayed++;
-						if(inputCard[numCardsPlayed].getValue()==getTopCard().getValue())
-							turns++;
-					}
-				}
-			}
-			
->>>>>>> 0e7fa454d5c89459996fcf00318764e4dd7652c9
 			
 			//Check for empty hand/winner
 			for(int i=0;i<players.size();i++){
@@ -131,7 +142,7 @@ public class Eggroll implements Play {
 			}if(players.size()==1){
 				finished=true;
 			}
-			turns++;
+			System.out.println();
 		}
 		
 		

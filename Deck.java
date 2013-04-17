@@ -12,17 +12,25 @@ public class Deck {
 	public ArrayList<Card> getCards(){ //Return ArrayList of Cards in deck
 		return cards;
 	}
-	
+	public static String[] getDeck(){
+		String[] suit={"Clubs", "Diamonds", "Hearts", "Spades"};
+		String[] rank={"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+		String[] cards=new String[suit.length*rank.length];
+		for(int i=0;i<suit.length;i++)
+			for(int j=0;j<rank.length;j++)
+				cards[i*rank.length+j]=rank[j]+" of "+suit[i];
+		return cards;
+	}
 	public Deck(){
 		cards=new ArrayList<Card>();
-		String[] standard=BlackJack.getCards(); //Don't understand why getCards() is in blackjack.class, but as long as it works...
+		String[] standard=getDeck(); 
 		for(String a:standard)
 			cards.add(new Card(a));
 	}
 	
 	public boolean hasCard(Card a){
 		for(Card b:cards){
-			if(a.similarRank(b)&&a.similarSuit(b))
+			if(b.similarRank(a)&&b.similarSuit(a))
 				return true;
 		}return false;
 	}
@@ -52,7 +60,7 @@ public class Deck {
 		return a;
 	}
 	
-	public int dealRaw(){ //Deals a card, returns cards value(blackjack)
+	public int dealRaw(){ //Deals a card, returns cards value(jack == 11, and so on)
 		Card a=cards.get(0);
 		takeCardOutOfDeck(a);
 		System.out.println(a);
