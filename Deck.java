@@ -44,7 +44,6 @@ public class Deck {
 	}
 	public void takeCardOutOfDeck(Card a){ //Takes specified card out of deck
 		for(int i=0;i<cards.size();i++){
-			System.out.println(a.toString()+":"+cards.get(i).toString());
 			if(a.toString().equals(cards.get(i).toString())){
 				cards.remove(i);
 				return;
