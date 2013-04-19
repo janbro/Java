@@ -29,14 +29,14 @@ public class Game implements Play{
 		
 		while(true){
 			System.out.println("Dealers hand:");
-			dealerTotal = deck.deal();
+			dealerTotal = deck.dealRaw();
 			System.out.println("\nYour hand:");
-			playerTotal = deck.deal()+deck.deal();
+			playerTotal = deck.dealRaw()+deck.dealRaw();
 			while(true){
 				System.out.println("\nHit or stay?");
 				input = scanner.nextLine();
 				if(input.toLowerCase().equals("hit")){
-					playerTotal+=deck.deal();
+					playerTotal+=deck.dealRaw();
 				}else if(input.toLowerCase().equals("stay")){
 					break;
 				}else{
@@ -53,11 +53,11 @@ public class Game implements Play{
 				break;
 			}
 			System.out.print("\n");
-			dealerTotal+=deck.deal();
+			dealerTotal+=deck.dealRaw();
 			System.out.println("Dealer Total:"+dealerTotal+"\n");
 			while(dealerTotal<=16){
 				System.out.println("Dealer hits:");
-				dealerTotal+=deck.deal();
+				dealerTotal+=deck.dealRaw();
 				System.out.println("Dealer Total: "+dealerTotal+"\n");
 			}
 			if(dealerTotal>21){
