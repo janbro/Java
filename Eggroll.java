@@ -255,7 +255,7 @@ public class Eggroll implements Play {
 					}
 				}if(players.size()==1){
 					finished=true;
-				}
+				}//
 				System.out.println();
 			}
 		}
