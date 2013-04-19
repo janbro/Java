@@ -86,16 +86,17 @@ public class Eggroll implements Play {
 		players.get(0).addCard(new Card("3 of clubs"));
 		while(!finished){
 			if(pile.getCards().size()>=4){
-			for(int i=0;i<3;i++){
-				if(!(pile.getCards().get(pile.getCards().size()-1-i).getValue()==pile.getCards().get(pile.getCards().size()-i-2).getValue()))
-					break;
-				sameCardCount=4;
-			}}
+				for(int i=0;i<3;i++){
+					if(!(pile.getCards().get(pile.getCards().size()-1-i).getValue()==pile.getCards().get(pile.getCards().size()-i-2).getValue()))
+						break;
+					if(i==2)
+						sameCardCount=4;
+				}
+			}
 			boolean pass=false;
 			int numCardsPlayed=0;
 			String input=null;
 			Card[] inputCard = new Card[0];
-
 			if(players.get(turns%players.size()).getHand().isEmpty()){ //Skip players that have no cards
 				turns++;
 			}
@@ -227,6 +228,7 @@ public class Eggroll implements Play {
 									pile.addCard(inputCard[numCardsPlayed-1-i]);
 								}
 							}else if(inputCard[0].getValue()==2){
+								sameCardCount=1;
 								pile.clearDeck();
 							}
 							else{
