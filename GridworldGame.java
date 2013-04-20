@@ -1,31 +1,26 @@
 package Java;
 
+import info.gridworld.actor.Actor;
+import info.gridworld.grid.*;
+
 public abstract class GridworldGame {
-	private int[][] gameBoard;
-	//create bounded grid
+	private BoundedGrid<Actor> gameBoard;
 	public GridworldGame(){
-		gameBoard=new int[4][4];
+		gameBoard=new BoundedGrid<Actor>(4,4);
 	}
 	public GridworldGame(int x,int y){
-		gameBoard=new int[x][y];
+		gameBoard=new BoundedGrid<Actor>(x,y);
 	}
 	public int getWidth(){
-		return gameBoard.length;
+		return gameBoard.getNumRows();
 	}
 	public int getHeight(){
-		return gameBoard[0].length;
+		return gameBoard.getNumCols();
 	}
-	public int[][] getBoard(){
-		int[][] board=new int[getWidth()][getHeight()];
-		for(int i=0;i<getWidth();i++)
-			for(int j=0;j<getHeight();j++)
-				board[i][j]=gameBoard[i][j];
-		return board;
+	public Actor getPos(Location loc){
+		return gameBoard.get(loc);
 	}
-	public int getPos(int x,int y){
-		return gameBoard[x][y];
-	}
-	public static boolean isValid(int move){
-		return true;
+	public boolean isValid(Location loc){
+		return gameBoard.isValid(loc);
 	}
 }
