@@ -1,37 +1,21 @@
 package Java;
 
-public class ConnectFour {
-	private int[][] gameBoard;
+import info.gridworld.grid.Location;
+
+public class ConnectFour extends GridworldGame {
 	public static void main(String[] args){
 		
 	}
 	public void play(int team,ConnectFourPlayer player){
 		
 	}
-	//create bounded grid
 	public ConnectFour(){
-		new ConnectFour(4,4);
+		super();
 	}
 	public ConnectFour(int x,int y){
-		gameBoard=new int[x][y];
+		super(x,y);
 	}
-	public int getWidth(){
-		return gameBoard.length;
-	}
-	public int getHeight(){
-		return gameBoard[0].length;
-	}
-	public int[][] getBoard(){
-		int[][] board=new int[getWidth()][getHeight()];
-		for(int i=0;i<getWidth();i++)
-			for(int j=0;j<getHeight();j++)
-				board[i][j]=gameBoard[i][j];
-		return board;
-	}
-	public int getPos(int x,int y){
-		return gameBoard[x][y];
-	}
-	public static boolean isValid(int move){
-		return true;
-	}
+//	public boolean isValid(Location loc){
+//		return gameBoard.isValid(loc);
+//	}
 }
