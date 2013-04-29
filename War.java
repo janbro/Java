@@ -50,9 +50,9 @@ public class War implements Play {
 			}if(done){System.out.print("\n");break;}
 			try{
 				System.out.print("Player: ");
-				playerTotal = deck.deal();
+				playerTotal = deck.dealRaw();
 				System.out.print("Dealer: ");
-				dealerTotal = deck.deal();
+				dealerTotal = deck.dealRaw();
 			}
 			catch(IndexOutOfBoundsException e){
 				System.out.println("\n\nOut of cards!\n");
