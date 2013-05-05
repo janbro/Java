@@ -1,4 +1,4 @@
-package Java;
+package Java.OldSchoolStuff;
 
 import java.awt.Color;
 import java.util.ArrayList;

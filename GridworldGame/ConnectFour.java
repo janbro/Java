@@ -1,4 +1,4 @@
-package Java;
+package Java.GridworldGame;
 
 import info.gridworld.grid.Location;
 

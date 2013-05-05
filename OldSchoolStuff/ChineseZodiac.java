@@ -1,4 +1,4 @@
-package Java;
+package Java.OldSchoolStuff;
 
 public class ChineseZodiac {
 	private static final int startYear=1924;

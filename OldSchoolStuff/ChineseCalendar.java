@@ -1,4 +1,4 @@
-package Java;
+package Java.OldSchoolStuff;
 
 public class ChineseCalendar extends ChineseZodiac{
 	public String shortZodiac(int year){

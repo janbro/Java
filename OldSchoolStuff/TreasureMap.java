@@ -1,4 +1,4 @@
-package Java;
+package Java.OldSchoolStuff;
 
 public class TreasureMap {
 	private boolean[][] map;

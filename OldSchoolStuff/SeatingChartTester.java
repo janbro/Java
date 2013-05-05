@@ -1,4 +1,4 @@
-package Java;
+package Java.OldSchoolStuff;
 
 public class SeatingChartTester {
 	public static void main(String[] args){

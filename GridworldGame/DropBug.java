@@ -1,4 +1,4 @@
-package Java;
+package Java.GridworldGame;
 
 import info.gridworld.actor.*;
 import java.awt.Color;

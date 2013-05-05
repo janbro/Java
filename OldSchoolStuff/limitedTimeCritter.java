@@ -1,4 +1,4 @@
-package Java;
+package Java.OldSchoolStuff;
 
 import info.gridworld.actor.Critter;
 

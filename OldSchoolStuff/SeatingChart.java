@@ -1,4 +1,4 @@
-package Java;
+package Java.OldSchoolStuff;
 
 public class SeatingChart {
 	private String[][] theChart;
