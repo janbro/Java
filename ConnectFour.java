@@ -15,7 +15,7 @@ public class ConnectFour extends GridworldGame {
 	public ConnectFour(int x,int y){
 		super(x,y);
 	}
-//	public boolean isValid(Location loc){
-//		return gameBoard.isValid(loc);
-//	}
+	public boolean isValid(Location loc){
+		return super.isValid(loc);
+	}
 }

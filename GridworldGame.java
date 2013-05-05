@@ -14,8 +14,15 @@ public abstract class GridworldGame {
 		gameBoard=new BoundedGrid<Actor>(x,y);
 		world=new ActorWorld(gameBoard);
 		world.show();
-		dropBug(1,Color.RED);
-		System.out.println("done");
+//		dropBug(1,Color.RED);
+//		System.out.println("done");
+	}
+	public boolean move(Location loc,Color col){
+		if(isValid(loc)){
+			dropBug(loc,col);
+			return true;
+		}
+		return false;
 	}
 	public int getWidth(){
 		return gameBoard.getNumRows();
@@ -29,9 +36,9 @@ public abstract class GridworldGame {
 	public boolean isValid(Location loc){
 		return gameBoard.isValid(loc);
 	}
-	public void dropBug(int col,Color color){
-		DropBug db=new DropBug(Color.RED);
-		world.add(db);
+	public void dropBug(Location loc,Color col){
+		DropBug db=new DropBug(col);
+		world.add(loc,db);
 		while(db.inLoop()){}
 	}
 }
