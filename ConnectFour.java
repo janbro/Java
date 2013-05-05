@@ -6,9 +6,6 @@ public class ConnectFour extends GridworldGame {
 	public static void main(String[] args){
 		new ConnectFour();
 	}
-	public void play(int team,ConnectFourPlayer player){
-		
-	}
 	public ConnectFour(){
 		super();
 	}

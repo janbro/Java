@@ -17,6 +17,9 @@ public abstract class GridworldGame {
 //		dropBug(1,Color.RED);
 //		System.out.println("done");
 	}
+	public void play(int team,GridworldGamePlayer player){
+		
+	}
 	public boolean move(Location loc,Color col){
 		if(isValid(loc)){
 			dropBug(loc,col);
