@@ -17,13 +17,18 @@ public abstract class GridworldGame {
 		world.show();
 	}
 	public void play(List<GridworldGamePlayer> players){
-		for(int i=0;true;i++){
+		int winningMove=-1;
+		for(int i=0;winningMove<0;i++){
 			if(players.size()<=i)
 				i=0;
 			for(int numTried=0;!move(players.get(i).getMove(this,numTried),getColor(i));numTried++){}
+			winningMove=winningMove(i);
 		}
+		win(winningMove);
 	}
 	public abstract Color getColor(int i);
+	public abstract int winningMove(int i);
+	public abstract void win(int winningMove);
 	public boolean move(Location loc,Color col){
 		if(isValid(loc)){
 			dropBug(loc,col);
@@ -41,6 +46,8 @@ public abstract class GridworldGame {
 		return gameBoard.get(loc);
 	}
 	public boolean isValid(Location loc){
+		if(gameBoard.get(loc)!=null)
+			return false;
 		return gameBoard.isValid(loc);
 	}
 	public void dropBug(Location loc,Color col){
