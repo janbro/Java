@@ -1,12 +1,9 @@
 package Java.GridworldGame;
 
-import java.awt.Color;
+import info.gridworld.grid.Location;
 
 public class RandomPlayer extends GridworldGamePlayer{
-	public RandomPlayer(Color col){
-		super(col);
-	}
-	public int getMove(GridworldGame game){
-		return (int)(Math.random()*game.getWidth());
+	public Location getMove(GridworldGame game,int numTried){
+		return new Location(0,(int)(Math.random()*game.getWidth()));
 	}
 }

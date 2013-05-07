@@ -1,6 +1,7 @@
 package Java.GridworldGame;
 
 import java.awt.Color;
+import java.util.List;
 import info.gridworld.actor.*;
 import info.gridworld.grid.*;
 
@@ -14,12 +15,15 @@ public abstract class GridworldGame {
 		gameBoard=new BoundedGrid<Actor>(x,y);
 		world=new ActorWorld(gameBoard);
 		world.show();
-//		dropBug(1,Color.RED);
-//		System.out.println("done");
 	}
-	public void play(int team,GridworldGamePlayer player){
-		
+	public void play(List<GridworldGamePlayer> players){
+		for(int i=0;true;i++){
+			if(players.size()<=i)
+				i=0;
+			for(int numTried=0;!move(players.get(i).getMove(this,numTried),getColor(i));numTried++){}
+		}
 	}
+	public abstract Color getColor(int i);
 	public boolean move(Location loc,Color col){
 		if(isValid(loc)){
 			dropBug(loc,col);

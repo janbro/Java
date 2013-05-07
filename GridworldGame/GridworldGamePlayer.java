@@ -1,13 +1,7 @@
 package Java.GridworldGame;
 
-import java.awt.Color;
+import info.gridworld.grid.Location;
 
 public abstract class GridworldGamePlayer {
-	public final Color col;
-	public GridworldGamePlayer(Color col){
-		this.col=col;
-	}
-	public int getMove(GridworldGame game){
-		return 0;
-	}
+	public abstract Location getMove(GridworldGame game,int numTried);
 }
