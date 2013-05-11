@@ -16,7 +16,7 @@ public abstract class GridworldGame {
 		world=new ActorWorld(gameBoard);
 		world.show();
 	}
-	public void play(List<GridworldGamePlayer> players){
+	public int play(List<GridworldGamePlayer> players){
 		int winningMove=-1;
 		for(int i=0;winningMove<0;i++){
 			if(players.size()<=i)
@@ -24,11 +24,11 @@ public abstract class GridworldGame {
 			for(int numTried=0;!move(players.get(i).getMove(this,numTried),getColor(i));numTried++){}
 			winningMove=winningMove(i);
 		}
-		win(winningMove);
+		return win(winningMove);
 	}
 	public abstract Color getColor(int i);
 	public abstract int winningMove(int i);
-	public abstract void win(int winningMove);
+	public abstract int win(int winningMove);
 	public boolean move(Location loc,Color col){
 		if(isValid(loc)){
 			dropBug(loc,col);

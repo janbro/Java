@@ -6,4 +6,7 @@ public class RandomPlayer extends GridworldGamePlayer{
 	public Location getMove(GridworldGame game,int numTried){
 		return new Location(0,(int)(Math.random()*game.getWidth()));
 	}
+	public String toString(){
+		return "RandomPlayer";
+	}
 }

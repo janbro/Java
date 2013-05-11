@@ -21,8 +21,8 @@ public class ConnectFour extends GridworldGame {
 		players.add(p2);
 		super.play(players);
 	}
-	public void win(int winningMove){
-		
+	public int win(int winningMove){
+		return 0;
 	}
 	public boolean isValid(Location loc){
 		return super.isValid(loc);
