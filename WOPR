@@ -1,0 +1,57 @@
+package Tester;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class wopr {
+	
+	public static void main(String[] args){
+		BufferedReader br = null;
+		String l = null;
+		try {
+ 
+ 
+			br = new BufferedReader(new FileReader("C:\\Documents and Settings\\0603003324\\Student Folder\\tester.txt"));
+
+			l = br.readLine();
+			
+		} 
+		
+		catch (IOException e) {
+			e.printStackTrace();
+		}String[] numExt = {"(311)767-","(311)399-","(311)437-","(311)936-"};
+		System.out.println("DIALING PROGRAM\n(311)767-XXXX  (311)399-XXXX  (311)437-XXXX  (311)936-XXXX"+
+		                                    "\n----------------------------------------------------------");
+		String[][] number= new String[10000][4];
+		for(int j=0;j<numExt.length;j++){
+			for(int i=0;i<=9999;i++){
+				String num = String.valueOf(i);
+				while(0<4-num.length()){
+					num = "0"+num;
+				}
+				number[i][j]=numExt[j]+num;
+				if(number[i][j].equals(l)){
+					j=99;
+					break;
+				}
+			}
+		}
+		
+		end:
+		for(int i=0;i<=9999;i++)
+        {
+			for(int j=0;j<4;j++)
+           {
+			 if(number[i][j]!=null)
+				System.out.print(number[i][j]);
+             if(j!=3)
+            	 System.out.print("  ");
+           }
+			System.out.println();
+         }
+	}
+}
+
+
+
