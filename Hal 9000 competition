@@ -1,0 +1,60 @@
+package work;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
+
+public class stuff {
+	
+	public static void main(String[] args){
+		System.out.println("HAL, open the pod bay doors.");
+		BufferedReader br = null;
+		String sCurrentLine="";
+		for(int i=10000;i>0;i++){
+			try {
+				br = new BufferedReader(new FileReader("C:\\Documents and Settings\\0603003324\\Student Folder\\tester.txt"));
+				sCurrentLine=br.readLine();
+			} 
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			int n=Integer.parseInt(sCurrentLine);
+			if(i>999){
+				i=n;
+			}
+			else{
+				for(int j=n;j>0;i--){
+					int[] time=new int[n];
+					for(int k=0;k<n;k++){
+						try {
+							br = new BufferedReader(new FileReader("C:\\Documents and Settings\\0603003324\\Student Folder\\tester.txt"));
+							sCurrentLine=br.readLine();
+						} 
+						catch (IOException e) {
+							e.printStackTrace();
+						}
+						time[k]=Integer.parseInt(sCurrentLine);
+					}
+					srt(time);
+					int[] ord=new int[n];
+					for(int k=0;k<n-1;k++){
+						int a=1;
+						for(int q=k;Math.abs(time[k]-time[k+1])==1;q++,a++){
+							
+						}
+							
+					}
+				}
+			}
+		}
+		System.out.println("I cannot do that, Dave.");
+	}
+	public static void srt(int[] arr){
+		Arrays.sort(arr);
+	}
+
+}
+
+
+
