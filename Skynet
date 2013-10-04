@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Tester {
+public class Skynet {
 	
 	public static void main(String[] args){
 		
@@ -61,6 +61,21 @@ public class Tester {
 	public static void printArray(ArrayList<String> list){
 		for(int i=0;i<list.size();i++)
 			System.out.println(list.get(i));
+	}
+	public static String extractWord(String word){
+		int i;
+		for(i=0;i<word.length();i++){
+			if(isInteger(word.substring(i,i+1))){
+				break;
+			}
+		}
+		int k;
+		for(k=0;k<word.substring(i).length();k++){
+			if(!isInteger(word.substring(i+k,i+k+1))){
+				break;
+			}
+		}return words.substring(0,i,)+word.substring(j);
+		
 	}
 
 	public static int extractNumber(String word){
