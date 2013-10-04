@@ -34,7 +34,12 @@ public class Skynet {
 					}
 					else{
 						for(int j=0;j<words.size();j++){
-							if(extractNumber(l)<extractNumber(words.get(j))){
+							if(extractWord(l).compareTo(words.get(j))<0){
+								words.add(j, l);
+								done=true;
+								break;
+							}
+							else if(extractNumber(l)<extractNumber(words.get(j))){
 								words.add(j, l);
 								done=true;
 								break;
