@@ -1,4 +1,4 @@
-package Tester;
+package tester;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -74,7 +74,7 @@ public class Skynet {
 			if(!isInteger(word.substring(i+k,i+k+1))){
 				break;
 			}
-		}return words.substring(0,i,)+word.substring(j);
+		}return word.substring(0,i)+word.substring(k);
 		
 	}
 
