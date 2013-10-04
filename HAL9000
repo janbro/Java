@@ -1,0 +1,63 @@
+package tester;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class HAL9000{
+	
+	public static void main(String[] args){
+		BufferedReader br = null;
+		try {
+ 
+			String l = null;
+ 
+			br = new BufferedReader(new FileReader("C:\\Documents and Settings\\0603003324\\Student Folder\\tester.txt"));
+
+			br.readLine();
+			int count=1;
+			boolean done = false;
+			
+			System.out.println("HAL, open the pod bay doors.");
+			
+			while(true){
+				ArrayList<String> words = new ArrayList<String>(); 
+				String numOfTimes;
+				if((numOfTimes=br.readLine()) == null)
+					break;
+				System.out.println("Command List #"+count);
+				int len =  Integer.parseInt(numOfTimes);
+				for(int i=0;i<len;i++){
+					l = br.readLine();
+					for(int j=0;j<words.size();j++){
+						if(words.isEmpty()){
+							words.add(l);
+							done=true;
+							break;
+						}
+						else if(Integer.parseInt(l.substring(0, l.indexOf(" ")))<Integer.parseInt(words.get(j).substring(0,words.get(j).indexOf((" "))))){
+							words.add(i,l);
+							done=true;
+							break;
+						}
+					}if(!done)
+						words.add(l);
+					else
+						done=false;
+				}
+				count++;
+				printArray(words);
+			}
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public static void printArray(ArrayList<String> list){
+		for(int i=0;i<list.size();i++)
+			System.out.println(list.get(i));
+	}
+
+}
