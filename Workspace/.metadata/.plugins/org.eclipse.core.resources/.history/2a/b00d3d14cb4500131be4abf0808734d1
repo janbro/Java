@@ -1,0 +1,53 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class Tester {
+	public static ArrayList<Integer> marble = new ArrayList<Integer>();
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String input = null;
+		String[] nums = new String[2];
+		input = reader.readLine();
+		int caseNum=1;
+		while(true){
+		if (input.length() > 1)
+			nums = input.split(" ");
+
+		input = reader.readLine();
+		for (int i = 0; i <Integer.parseInt(nums[0]); i++) {
+			sortAdd(Integer.parseInt(input));
+			input = reader.readLine();
+		}System.out.println("CASE # "+caseNum+":");
+		for (int i = 0; i < Integer.parseInt(nums[1]); i++) {
+			if (marble.contains(Integer.parseInt(input)))
+				System.out.println(input + " found at " + (marble.indexOf(Integer.parseInt(input))+1));
+			else
+				System.out.println(input + " not found");
+			
+			if(i<Integer.parseInt(nums[1])-1)
+				input = reader.readLine();
+		}marble.clear();
+		nums=null;
+		if((input=reader.readLine()).equals("0 0"))
+			break;
+		caseNum++;
+		}
+
+	}
+
+	public static void sortAdd(int num) {
+		if (marble.size() < 1) {
+			marble.add(num);
+			return;
+		}
+		for (int i = 0; i < marble.size(); i++)
+			if (marble.get(i) > num) {
+				marble.add(i, num);
+				return;
+			}
+		marble.add(num);
+	}
+}

@@ -1,0 +1,6 @@
+
+public class Tester {
+	
+	BufferedReader reader = new BufferedReader(System.in);
+
+}
