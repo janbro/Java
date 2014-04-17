@@ -1,0 +1,9 @@
+import java.io.BufferedReader;
+import java.io.InputStream;
+
+
+public class Tester {
+	
+	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+}

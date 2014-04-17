@@ -1,0 +1,24 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+
+public class Tester {
+	public ArrayList<Integer> marble = new ArrayList<Integer>();
+	public static void main(String[] args) throws IOException{
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String input=null;
+		String[] nums = new String[2];
+		while((input=reader.readLine())!=null){
+			if(input.length()>1)
+				nums=input.split(" ");
+			else{
+				for(int i=0;i<Integer.parseInt(nums[0]);i++){
+					
+				}
+			}
+		}
+	}
+	public static sortAdd()
+}

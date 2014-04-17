@@ -1,0 +1,13 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+
+public class Tester {
+	
+	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	String input=null;
+	String[] nums = new String[2];
+	while((input=reader.readLine())!=null){
+		
+	}
+}
