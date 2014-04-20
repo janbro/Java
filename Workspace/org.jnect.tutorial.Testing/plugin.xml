@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.jnect.tutorial.testing.StartStopHandler"
+            id="org.jnect.tutorial.Testing.startStop"
+            name="Start/Stop">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="org.jnect.tutorial.Testing.tutorial"
+               label="Start/Stop">
+            <command
+                  commandId="org.jnect.tutorial.Testing.startStop"
+                  label="Start/Stop"
+                  style="push">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>
