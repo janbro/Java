@@ -1,0 +1,61 @@
+Probem statement is given in file :  mtc3-kitrub-05-crtchallenge-en.pdf
+Values given in file : mtc3-kitrub-05-smartcard.txt
+
+We are using BigDigit Library which is open source software used to handle big numbers.
+Files used from BigDigit Library
+bigd.c
+bigd.h
+bigdigit.c
+bigdigit.h
+bigdtypes.h
+
+We have written three programs 
+-------------------------------------------------------------------------------------
+1. smartcard_rsa.c: In this file values of N, e and cipher text are harcoded. They are as per in the given problem statement. We have calculated value of p by mounting brute force attack on dp and by using sage software. Value of p is also hardcoded in this file and it is as per the output of sage software. This program based on N, e, p and cipher text calculates plain text message M using Chinese Remainder Theorem in ASCII string format. 
+
+2. rsa.c: In this file values of N, e and cipher txt are hardcoded and they are as per in the given problem statement. We have calculated value of private key d from sage software. Value of d is hardcoded in this file. We calculated plain text message M using normal RSA decruption algorithm and found that using both methods we are getting same plain text message. We also measure time taken by both programs and it clearly indicates decryption algorithm using Chinese Remainder Theorem is faster than decryption algorithm of normal RSA.
+
+Output Snippet
+======================================================================================
+teja@ubuntu:~/BigDigit$ time ./smartcardRsa
+
+plaintext = 8851286807750333299211247386603716102098212948868340444793378552783877632347545328977211646318917271548352654722645021529478184878282608076120337616897753623132201265317076919921700817605064231027433504627953074164435355725034790625438491781147834836814683959169728790492206
+
+Message in plain text : Artificial intelligence is the intelligence of machines and the branch of computer science that aims to create it.
+
+real	0m0.026s
+user	0m0.024s
+sys	0m0.000s
+
+
+teja@ubuntu:~/Downloads/BigDigit$ time ./rsa 
+
+
+plaintext = 8851286807750333299211247386603716102098212948868340444793378552783877632347545328977211646318917271548352654722645021529478184878282608076120337616897753623132201265317076919921700817605064231027433504627953074164435355725034790625438491781147834836814683959169728790492206
+
+Message in plain text : Artificial intelligence is the intelligence of machines and the branch of computer science that aims to create it.
+
+real	0m0.134s
+user	0m0.132s
+sys	0m0.000s
+======================================================================================
+
+3. brute_force_rsa.c: This file takes values of N, e and cipher text from command line. It calculates p by mounting brute force attack on dp. This works for small values only. Even after using BigDigit library it takes too much time to calculate large exponention values. Once p and dp are known it finds out plain text message in ASCII and decimal format using Chinese Remainder Theorem.
+
+
+
+How to run
+---------------------------------------------------------------------------
+Run the following steps
+1. Untar the folder SmartCardRSA.tar.gz using 
+   tar -xzvf SmartCardRSA.tar.gz on linux terminal
+2. Goto folder SmartCardRSA and run 'make' command on terminal
+3. It will create smartcardRsa, rsa and bruteForceRsa executable files for above three files.
+4. Run ./smartcardRsa to get the result using Chinese Remainder theorem decryption algorithm. By default DEBUG mode is off. You can also check   for 'time ./smardcardRsa' in order to measure time.
+5. Run ./rsa to get the result using normal RSA decryption algorithm to compare the results. You can also check for 'time ./rsa' in order to     measure time.
+5. Run ./bruteForceRsa executable using 
+   './bruteForceRsa <value of N in decimal> <value of e in decimal> <value of cipher text in decimal>'
+   e.g. 
+   './bruteForceRsa 17947 3 8363'
+   By default DEBUG mode is off. 
+6. To clean run 'make clean' command.
