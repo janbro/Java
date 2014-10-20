@@ -12,7 +12,6 @@ public class RoastedSnack {
 		String gridSize[];
 		int casenum=1;
 		while(!(gridSize = br.readLine().split(" "))[0].equals("0")&&!gridSize[1].equals("0")){
-			System.out.println("("+gridSize[0]+","+gridSize[1]+")");
 			String grid[][] = new String[Integer.parseInt(gridSize[0])][Integer.parseInt(gridSize[1])];
 			for(int i=0;i<grid.length;i++){
 				grid[i] = br.readLine().split("");
@@ -24,11 +23,6 @@ public class RoastedSnack {
 				int greatestrowcount=0;
 				int columncount=0;
 				int greatestcol = 0;
-				for(int i=0;i<grid.length;i++){
-					for(int k=0;k<grid[0].length;k++){
-						System.out.print(grid[i][k]);
-					}System.out.println();
-				}System.out.println("CASE"+casenum);
 				for(int i=0;i<grid.length;i++){
 					int rowCount=0;
 					for(int j=0;j<grid[i].length;j++){
