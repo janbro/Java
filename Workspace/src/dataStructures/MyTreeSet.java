@@ -10,7 +10,8 @@ public class MyTreeSet extends TreeSet{
 			return set;
 		if(A.first().equals(B.first()))
 		
-		return null;
+		return set;
+		return set;
 	}
 		
 	public TreeSet union(TreeSet A,TreeSet B){
