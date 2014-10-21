@@ -45,14 +45,12 @@ public class RoastedSnack {
 					}
 					columncount=0;
 				}
-				if(greatestcolcount<=greatestrowcount){
+				if(colSheep(grid)>rowSheep(grid))
 					for(int i=0;i<grid[0].length;i++)
 						grid[greatestrow][i] = ".";
-				}
-				else if(greatestcolcount>greatestrowcount){
+				else
 					for(int i=0;i<grid.length;i++)
 						grid[i][greatestcol] = ".";
-				}
 				fire++;
 			}
 			pr.println("Case "+casenum+": The dragons must breathe fire "+fire+" time(s).");
@@ -66,6 +64,30 @@ public class RoastedSnack {
 				if(str.equals("S"))
 					return true;
 		return false;
+	}
+	static int rowSheep(String gr[][]){
+		int tot=0;
+		for(String row[]:gr)
+			for(String str:row)
+				if(str.equals("S")){
+					tot++;
+					break;
+				}
+
+		return tot;
+	}
+	
+	static int colSheep(String gr[][]){
+		int tot=0;
+		for(int i=0;i<gr[0].length;i++){
+			for(int j=0;j<gr.length;j++){
+				if(gr[j][i].equals("S")){
+					tot++;
+					break;
+				}
+			}
+		}
+		return tot;
 	}
 
 }
