@@ -1,5 +1,7 @@
 package dataStructures;
 
+import AICE.MyNode;
+
 public class Tester {
 	
 	public static void main(String[] args){

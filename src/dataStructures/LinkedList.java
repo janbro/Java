@@ -1,5 +1,7 @@
 package dataStructures;
 
+import AICE.MyNode;
+
 public class LinkedList {
 	
 	private MyNode head;
