@@ -8,7 +8,7 @@ import battlecode.common.RobotController;
 public class Beaver extends BasicPlayer{
 
 	public Beaver(RobotController myRc) throws GameActionException{
-		super(myRc);
+		super(myRc,myRc.getID());
 		try{
 			run();
 		}

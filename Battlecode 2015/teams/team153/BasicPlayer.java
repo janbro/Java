@@ -11,12 +11,15 @@ public class BasicPlayer {
 	static Random rand;
 	static Direction[] directions = {Direction.NORTH, Direction.NORTH_EAST, Direction.EAST, Direction.SOUTH_EAST, Direction.SOUTH, Direction.SOUTH_WEST, Direction.WEST, Direction.NORTH_WEST};
 
-	public BasicPlayer(RobotController myRc){
-		rand = new Random(rc.getID());
+	public BasicPlayer(RobotController myRc,int id){
+		rand = new Random(id);
 		rc = myRc;
 	}
 	
 	public static void spawnUnit(RobotType type) throws GameActionException{
+		if(!rc.isCoreReady()){
+			return;
+		}
 		for(Direction dir:directions){
 			if(rc.canSpawn(dir, type)){
 				rc.spawn(dir, type);
@@ -27,6 +30,9 @@ public class BasicPlayer {
 
 
 	public static void randMove() throws GameActionException{
+		if(!rc.isCoreReady()){
+			return;
+		}
 		ArrayList<Direction> possDirs = new ArrayList<Direction>();
 		for(Direction dir:directions){
 			possDirs.add(dir);

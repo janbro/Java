@@ -5,7 +5,7 @@ import battlecode.common.*;
 public class Hq extends BasicPlayer {
 	
 	public Hq(RobotController myRc){
-		super(myRc);
+		super(myRc,myRc.getID());
 		try{
 			run();
 		}
