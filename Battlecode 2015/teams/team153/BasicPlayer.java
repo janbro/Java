@@ -11,6 +11,11 @@ public class BasicPlayer {
 	static Random rand;
 	static Direction[] directions = {Direction.NORTH, Direction.NORTH_EAST, Direction.EAST, Direction.SOUTH_EAST, Direction.SOUTH, Direction.SOUTH_WEST, Direction.WEST, Direction.NORTH_WEST};
 
+	public BasicPlayer(RobotController myRc){
+		rand = new Random(rc.getID());
+		rc = myRc;
+	}
+	
 	public static void spawnUnit(RobotType type) throws GameActionException{
 		for(Direction dir:directions){
 			if(rc.canSpawn(dir, type)){

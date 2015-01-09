@@ -1,14 +1,11 @@
 package team153;
 
-import java.util.Random;
-
 import battlecode.common.*;
 
 public class Hq extends BasicPlayer {
 	
 	public Hq(RobotController myRc){
-		rand = new Random(rc.getID());
-		rc = myRc;
+		super(myRc);
 		try{
 			run();
 		}

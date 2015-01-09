@@ -5,7 +5,7 @@ import battlecode.common.*;
 public class Soldier extends BasicPlayer {
 	
 	public Soldier(RobotController myRc){
-		rc = myRc;
+		super(myRc);
 		try{
 			run();
 		}
